@@ -1,5 +1,5 @@
 # tinderbux
-my very own cryptocurrency wallet (only supports tinderbux)
+- The Official TinderBUX Crypto Wallet -
 
-works off of a main server, which is run by the owner.
-If it's not working, thats why
+*works off of a main server, which is run by the owner.
+if it's not working, thats likely why*
