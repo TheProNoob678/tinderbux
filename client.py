@@ -1,7 +1,8 @@
 import requests
 
+# Update this URL with your ngrok URL
 BASE_URL = 'http://127.0.0.1:5000'
-ADMIN_KEY = ''  # Good Luck
+ADMIN_KEY = ''
 
 def create_wallet(owner):
     response = requests.post(f'{BASE_URL}/create_wallet', json={'owner': owner})
@@ -20,6 +21,14 @@ def transfer(sender, recipient, amount):
     return response.json()
 
 def main():
+    print("""
+ ______   __     __   __     _____     ______     ______        ______     __  __     __  __    
+/\__  _\ /\ \   /\ "-.\ \   /\  __-.  /\  ___\   /\  == \      /\  == \   /\ \/\ \   /\_\_\_\   
+\/_/\ \/ \ \ \  \ \ \-.  \  \ \ \/\ \ \ \  __\   \ \  __<      \ \  __<   \ \ \_\ \  \/_/\_\/_  
+   \ \_\  \ \_\  \ \_\\"\_\  \ \____-  \ \_____\  \ \_\ \_\     \ \_____\  \ \_____\   /\_\/\_\ 
+    \/_/   \/_/   \/_/ \/_/   \/____/   \/_____/   \/_/ /_/      \/_____/   \/_____/   \/_/\/_/ 
+                                                                                                
+""")
     owner = input("Enter your wallet name: ")
     admin = False
 
@@ -51,18 +60,18 @@ def main():
             balance_response = check_balance(owner)
             print(f"Balance: {balance_response.get('balance')}")
 
-        elif choice == '2' and admin:
+        elif choice == '4' and admin:
             amount = float(input("Enter amount to request: "))
             deposit_response = request_deposit(owner, amount, admin_key)
             print(deposit_response.get("message"))
 
-        elif choice == '3':
+        elif choice == '2':
             recipient = input("Enter recipient wallet name: ")
             amount = float(input("Enter amount to transfer: "))
             transfer_response = transfer(owner, recipient, amount)
             print(transfer_response.get("message"))
 
-        elif choice == '4':
+        elif choice == '3':
             print("Goodbye!")
             break
 
